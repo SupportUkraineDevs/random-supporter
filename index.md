@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## 🇺🇦 Support a Ukrainian developer 🇺🇦
 
 You can use the [editor on GitHub](https://github.com/Support-Ukrainian-Creators-and-Coders/random-supporter/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
