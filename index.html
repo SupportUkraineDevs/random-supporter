@@ -13,7 +13,7 @@
             display: flex;
             flex-direction: column;
             vertical-align: middle;
-            margin-top: 22rem;
+            margin-top: 17rem;
 
         }
 
@@ -24,15 +24,22 @@
             border-radius: 10px;
         }
 
-        .flag-medium {
-            width: 85px;
-            height: auto;
-            padding: 20px;
+        footer {
+          margin-top: 20px;
         }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
-        function getSheetData(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; $.get(url, function( data ) { console.log(data); }); }
+        let sheetData;
+        function getSheetData(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; $.get(url, function( data ) { console.log(data); sheetData = data; }); }
+        function getRandomInt(max) { return Math.floor(Math.random() * max); }
+        function getRandomElement(array) { return array[getRandomInt(array.length)]}
+        function openInNewTab(url) { window.open(url, '_blank').focus();}
+        function supportRandomDev() { let dev = getRandomElement(sheetData.rows); if (dev.profile) openInNewTab(dev.profile); }
+        (function () {
+          getSheetData();
+        })();
     </script>
      <!--
     <script async defer src="https://apis.google.com/js/api.js"
@@ -43,14 +50,14 @@
 </head>
 <body>
     <div class="main-container">
-        <img class="flag-medium" src="Square-Ukraine-Flag-PNG-HD-Quality.png" alt="">
+        <img class="flag-medium" src="ua.png" alt="">
         <header class="flexy">
             <h1>
                 Support a random ukrainian developer!
             </h1>
         </header>
         <div  class="flexy">
-            <button class="big-button">Support 🙌</button>
+            <button class="big-button" onclick="supportRandomDev()">Support 🙌</button>
         </div>
         <footer  class="flexy"> 
             <a href="mailto:stopitvladimir@gmail.com">Contact us</a>
