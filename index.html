@@ -34,10 +34,12 @@
     <script type="text/javascript">
         function getSheetData(){ var url = "http://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; $.get(url, function( data ) { console.log(data); }); }
     </script>
-     <script async defer src="https://apis.google.com/js/api.js"
+     <!--
+    <script async defer src="https://apis.google.com/js/api.js"
      onload="this.onload=function(){};handleClientLoad()"
      onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
+      -->
 </head>
 <body>
     <div class="main-container">
@@ -54,18 +56,21 @@
             <a href="mailto:stopitvladimir@gmail.com">Contact us</a>
         </footer>
     </div>
+    <!--
     <p>Google Sheets API Quickstart</p>
-
-    <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
+     -->
+     <!--
 
-    <script type="text/javascript">
+     -->
+    <!--
+      <script type="text/javascript">
       // Client ID and API key from the Developer Console
-      var CLIENT_ID = '777615970905-35egt6roiug7e9ti5fdqhogvtk6ej0pq.apps.googleusercontent.com';
-      var API_KEY = 'AIzaSyCVJMtPWs-fwEsyagLODUC_Q5eH-3hYoE8';
+      var CLIENT_ID = '';
+      var API_KEY = '';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
@@ -174,6 +179,7 @@
       }
 
     </script>
+    -->
 
 
 </body>
