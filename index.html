@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Supporter</title>
+    <link rel="icon" 
+      type="image/png" 
+      href="favicon.ico">
     <link rel="stylesheet" href="diigo/css/style.css">
     <style>
         .main-container {
@@ -31,15 +34,32 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
+        
         let sheetData;
-        function getSheetData(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; $.get(url, function( data ) { console.log(data); sheetData = data; }); }
+        let storage = window.sessionStorage;
+        let alreadySupported = storage.getItem('already-supported') ? new Set(storage.getItem('already-supported').split(',')) : new Set();
+        (function () {
+        
+        })();
+        function supportRandomDev(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; 
+          fetch(url).then(data => data.json()).then( function( data ) { 
+            console.log(data); 
+            let dev = getRandomElement(data.rows); 
+            if (dev.profile && !alreadySupported.has(dev.profile)) {
+              alreadySupported.add(dev.profile);
+              storage.setItem('already-supported', [...alreadySupported].join())
+              openInNewTab(dev.profile); 
+              return;
+            } else {
+              supportRandomDev();
+            }
+          }); 
+        }
+
         function getRandomInt(max) { return Math.floor(Math.random() * max); }
         function getRandomElement(array) { return array[getRandomInt(array.length)]}
         function openInNewTab(url) { window.open(url, '_blank').focus();}
-        function supportRandomDev() { let dev = getRandomElement(sheetData.rows); if (dev.profile) openInNewTab(dev.profile); }
-        (function () {
-          getSheetData();
-        })();
+       
     </script>
      <!--
     <script async defer src="https://apis.google.com/js/api.js"
