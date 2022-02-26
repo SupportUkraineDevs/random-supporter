@@ -1,4 +1,5 @@
 ## 🇺🇦 Support a Ukrainian developer 🇺🇦
+<button type="button" name="button" class="btn">Support a random developer</button>
 
 You can use the [editor on GitHub](https://github.com/Support-Ukrainian-Creators-and-Coders/random-supporter/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
