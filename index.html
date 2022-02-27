@@ -89,7 +89,7 @@
       /*
       * Version
       */
-      const version = "1.0.0";
+      const version = "1.0.1";
       /*
       * Init cycle to get cookie with already visited devs, check if api version has changed and in case delete cookies
       */
@@ -158,8 +158,8 @@
             <button class="big-button" onclick='var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; fetch(url).then(data => data.json()).then( function( data ) { if(alreadySupported.length >= data.rows.length) {alreadySupported = new Set();} let dev = getRandomElement(data.rows); if (dev.profile && !alreadySupported.has(dev.profile)) { alreadySupported.add(dev.profile); setCookie("already-supported", [...alreadySupported].join(), 7); openInNewTab(dev.profile); return; } else { supportRandomDev(); } });'>Support <div class="support-emoji">🙌</div></button>
         </div>
         <footer  style="display: flex"> 
-            <a class="footer-link bouncy-link" href="https://github.com/Support-Ukrainian-Creators-and-Coders/ukrainian-creators-and-coders">🚩Main Project</a>
-            <a href="https://github.com/support-ukrainian-creators-and-coders/random-supporter/"><img class="octocat" src="Octocat.png" alt=""></a>
+            <a class="footer-link bouncy-link" href="https://docs.google.com/spreadsheets/d/1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM/edit#gid=0">🚩Source Data</a>
+            <a href="https://github.com/Support-Ukrainian-Creators-and-Coders/ukrainian-creators-and-coders"><img class="octocat" src="Octocat.png" alt=""></a>
             <a class="footer-link bouncy-link" href="mailto:stopitvladimir@gmail.com">📧Contact us</a>
         </footer>
     </div>
