@@ -9,6 +9,10 @@
       type="image/png" 
       href="favicon.ico">
     <link rel="stylesheet" href="diigo/css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <style>
         .main-container {
             align-items: center;
@@ -34,16 +38,38 @@
         .octocat {
           height: 60px;
           width: auto;
-          align-self: center;
         }
 
-        a:hover {
-          text-decoration: underline;
+        .octocat:hover{
+          animation: bounce; 
+          animation-duration: 1s; 
         }
-
         .lead-text {
           text-align: center;
         }
+        .secondary-text {
+          text-align: center;
+          padding-bottom: 1rem;
+        }
+        .footer-link {
+          align-self: center
+        }
+
+        .bouncy-link:hover {
+          animation: headShake; 
+          animation-duration: 2s; 
+        }
+
+        .big-button:hover > .support-emoji {
+          animation: shakeY; 
+          animation-duration: 2s; 
+        }
+
+        .support-emoji {
+          display: inline-block; 
+        }
+
+
 
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -87,16 +113,19 @@
         <img class="flag-medium" src="ua.png" alt="">
         <header>
             <h1 class="lead-text">
-                Support a random ukrainian developer!
+              Support a random ukrainian developer!
             </h1>
+            <p class="secondary-text">
+              Donate, follow, star their projects, make a (generous) job offer, arrange refuge, stream their content or just show some love
+            </p>
         </header>
         <div>
-            <button class="big-button" onclick="supportRandomDev()">Support 🙌</button>
+            <button class="big-button" onclick="supportRandomDev()">Support <div class="support-emoji">🙌</div></button>
         </div>
         <footer  style="display: flex"> 
-            <a href="https://github.com/Support-Ukrainian-Creators-and-Coders/ukrainian-creators-and-coders">🚩Main Project</a>
+            <a class="footer-link bouncy-link" href="https://github.com/Support-Ukrainian-Creators-and-Coders/ukrainian-creators-and-coders">🚩Main Project</a>
             <a href="https://github.com/support-ukrainian-creators-and-coders/random-supporter/"><img class="octocat" src="Octocat.png" alt=""></a>
-            <a href="mailto:stopitvladimir@gmail.com">📧Contact us</a>
+            <a class="footer-link bouncy-link" href="mailto:stopitvladimir@gmail.com">📧Contact us</a>
         </footer>
     </div>
     <!--
