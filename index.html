@@ -18,11 +18,11 @@
     <link rel="icon" 
       type="image/png" 
       href="favicon.ico">
-    <link rel="stylesheet" href="diigo/css/style.css">
+    <link rel="stylesheet" 
+      href="diigo/css/style.css">
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         .main-container {
             align-items: center;
@@ -31,7 +31,6 @@
             flex-direction: column;
             vertical-align: middle;
             margin-top: 10rem;
-
         }
 
         
@@ -87,32 +86,57 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
-        
-        let sheetData;
-        let storage = window.sessionStorage;
-        let alreadySupported = storage.getItem('already-supported') ? new Set(storage.getItem('already-supported').split(',')) : new Set();
-        (function () {
-        
-        })();
-        function supportRandomDev(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; 
-          fetch(url).then(data => data.json()).then( function( data ) { 
-            console.log(data); 
-            let dev = getRandomElement(data.rows); 
-            if (dev.profile && !alreadySupported.has(dev.profile)) {
-              alreadySupported.add(dev.profile);
-              storage.setItem('already-supported', [...alreadySupported].join())
-              openInNewTab(dev.profile); 
-              return;
-            } else {
-              supportRandomDev();
-            }
-          }); 
-        }
+      /*
+      * Init cycle to get cookie with already visited devs
+      */
+      let alreadySupported;
+      (function () {
+        alreadySupported = getCookie('already-supported') ? new Set(getCookie('already-supported').split(',')) : new Set();
+      })();
 
-        function getRandomInt(max) { return Math.floor(Math.random() * max); }
-        function getRandomElement(array) { return array[getRandomInt(array.length)]}
-        function openInNewTab(url) { window.open(url, '_blank').focus();}
-       
+      /*
+      * Functions
+      */
+      function supportRandomDev(){ 
+        var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; 
+        fetch(url).then(data => data.json()).then( function( data ) { 
+          let dev = getRandomElement(data.rows); 
+          if (dev.profile && !alreadySupported.has(dev.profile)) {        
+            alreadySupported.add(dev.profile); 
+            setCookie('already-supported', [...alreadySupported].join(), 7);
+            openInNewTab(dev.profile); 
+            return;
+          } else {
+            supportRandomDev();
+          }
+        }); 
+      }
+
+      function getRandomInt(max) { return Math.floor(Math.random() * max); }
+      function getRandomElement(array) { return array[getRandomInt(array.length)]}
+      function openInNewTab(url) { window.open(url, '_blank').focus();}
+      function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+      function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
+      function eraseCookie(name) {   
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      }       
     </script>
 </head>
 <body>
@@ -138,8 +162,5 @@
             <a class="footer-link bouncy-link" href="mailto:stopitvladimir@gmail.com">📧Contact us</a>
         </footer>
     </div>
-
-
-
-</body>
+  </body>
 </html>
