@@ -112,7 +112,33 @@
       /*
       * Custom Functions
       */
-      function supportRandomDev(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; fetch(url).then(data => data.json()).then( function( data ) { if(alreadySupported.length >= data.rows.length) {alreadySupported = new Set();} let dev = getRandomElement(data.rows); if (dev.profile && !alreadySupported.has(dev.profile)) { alreadySupported.add(dev.profile); setCookie('already-supported', [...alreadySupported].join(), 7); openInNewTab(dev.profile); return; } else { supportRandomDev(); } }); }
+      function supportRandomDev(){  
+        /*
+        * Put whole function in 'big-button' onclick handler to avoid popup blockers
+        */
+        var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; 
+        fetch(url).then(data => data.json())
+        .then( function( data ) { 
+          if(alreadySupported.length >= data.rows.length) {
+            alreadySupported = new Set();
+          } 
+          let dev = getRandomElement(data.rows); 
+          let found = false;
+          do {
+            if (dev.profile && !alreadySupported.has(dev.profile)) { 
+              alreadySupported.add(dev.profile); 
+              setCookie('already-supported', [...alreadySupported].join(), 7); 
+              openInNewTab(dev.profile); 
+              found = true;
+              return; 
+            } else { 
+              dev = getRandomElement(data.rows); 
+            
+            } 
+          } while (found === false);
+            
+        });
+      }
       function getRandomInt(max) { return Math.floor(Math.random() * max); }
       function getRandomElement(array) { return array[getRandomIntCrypto(array.length)]}
       function openInNewTab(url) { window.open(url, '_blank').focus();}
@@ -168,7 +194,28 @@
             </p>
         </header>
         <div>
-            <button class="big-button" onclick='var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; fetch(url).then(data => data.json()).then( function( data ) { if(alreadySupported.length >= data.rows.length) {alreadySupported = new Set();} let dev = getRandomElement(data.rows); if (dev.profile && !alreadySupported.has(dev.profile)) { alreadySupported.add(dev.profile); setCookie("already-supported", [...alreadySupported].join(), 7); openInNewTab(dev.profile); return; } else { supportRandomDev(); } });'>Support <div class="support-emoji">🙌</div></button>
+            <button class="big-button" onclick='
+            var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1";         
+            fetch(url).then(data => data.json())        
+            .then(function( data ) {           
+              if(alreadySupported.length >= data.rows.length) {            
+                alreadySupported = new Set();          
+              }           
+              let dev = getRandomElement(data.rows);           
+              let found = false;          
+              do {            
+                if (dev.profile && !alreadySupported.has(dev.profile)) {               
+                  alreadySupported.add(dev.profile);               
+                  setCookie("already-supported", [...alreadySupported].join(), 7);               
+                  openInNewTab(dev.profile);               
+                  found = true; 
+                  return;             
+                  } else {               
+                    dev = getRandomElement(data.rows);     
+                  }           
+                } while (found === false);                    
+              });
+            '>Support <div class="support-emoji">🙌</div></button>
         </div>
         <footer  style="display: flex"> 
             <a class="footer-link bouncy-link" href="https://docs.google.com/spreadsheets/d/1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM/edit#gid=0">🚩Source Data</a>
