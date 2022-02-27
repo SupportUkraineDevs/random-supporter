@@ -100,7 +100,7 @@
       function supportRandomDev(){ 
         var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; 
         fetch(url).then(data => data.json()).then( function( data ) { 
-          if(alreadySupported.length == data.rows.length) {
+          if(alreadySupported.length >= data.rows.length) {
             alreadySupported = new Set();
           }
           let dev = getRandomElement(data.rows); 
