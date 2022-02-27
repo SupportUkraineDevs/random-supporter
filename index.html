@@ -87,18 +87,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
       /*
-      * Init cycle to get cookie with already visited devs
+      * Version
+      */
+      const version = "1.0.0";
+      /*
+      * Init cycle to get cookie with already visited devs, check if api version has changed and in case delete cookies
       */
       let alreadySupported;
       (function () {
+
+        let previousVersion = getCookie('api-version');
+        
+        if (version != previousVersion) {
+          console.log('Version changed from ' + previousVersion + ' to ' + version);
+          eraseCookie('already-supported');
+        }
+
+        setCookie('api-version', version, 7);
+        
         alreadySupported = getCookie('already-supported') ? new Set(getCookie('already-supported').split(',')) : new Set();
+        
       })();
 
       /*
       * Functions
       */
       function supportRandomDev(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; fetch(url).then(data => data.json()).then( function( data ) { if(alreadySupported.length >= data.rows.length) {alreadySupported = new Set();} let dev = getRandomElement(data.rows); if (dev.profile && !alreadySupported.has(dev.profile)) { alreadySupported.add(dev.profile); setCookie('already-supported', [...alreadySupported].join(), 7); openInNewTab(dev.profile); return; } else { supportRandomDev(); } }); }
-
       function getRandomInt(max) { return Math.floor(Math.random() * max); }
       function getRandomElement(array) { return array[getRandomInt(array.length)]}
       function openInNewTab(url) { window.open(url, '_blank').focus();}
