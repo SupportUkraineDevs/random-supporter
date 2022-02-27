@@ -34,10 +34,15 @@
         .octocat {
           height: 60px;
           width: auto;
+          align-self: center;
         }
 
         a:hover {
           text-decoration: underline;
+        }
+
+        .lead-text {
+          text-align: center;
         }
 
     </style>
@@ -80,18 +85,18 @@
 <body>
     <div class="main-container">
         <img class="flag-medium" src="ua.png" alt="">
-        <header class="flexy">
-            <h1>
+        <header>
+            <h1 class="lead-text">
                 Support a random ukrainian developer!
             </h1>
         </header>
-        <div  class="flexy">
+        <div>
             <button class="big-button" onclick="supportRandomDev()">Support 🙌</button>
         </div>
-        <footer  class="flexy"> 
+        <footer  style="display: flex"> 
             <a href="https://github.com/Support-Ukrainian-Creators-and-Coders/ukrainian-creators-and-coders">🚩Main Project</a>
             <a href="https://github.com/support-ukrainian-creators-and-coders/random-supporter/"><img class="octocat" src="Octocat.png" alt=""></a>
-            <a href="mailto:stopitvladimir@gmail.com">Contact us</a>
+            <a href="mailto:stopitvladimir@gmail.com">📧Contact us</a>
         </footer>
     </div>
     <!--
