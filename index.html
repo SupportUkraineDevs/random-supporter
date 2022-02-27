@@ -97,23 +97,7 @@
       /*
       * Functions
       */
-      function supportRandomDev(){ 
-        var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; 
-        fetch(url).then(data => data.json()).then( function( data ) { 
-          if(alreadySupported.length >= data.rows.length) {
-            alreadySupported = new Set();
-          }
-          let dev = getRandomElement(data.rows); 
-          if (dev.profile && !alreadySupported.has(dev.profile)) {        
-            alreadySupported.add(dev.profile); 
-            setCookie('already-supported', [...alreadySupported].join(), 7);
-            openInNewTab(dev.profile); 
-            return;
-          } else {
-            supportRandomDev();
-          }
-        }); 
-      }
+      function supportRandomDev(){ var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; fetch(url).then(data => data.json()).then( function( data ) { if(alreadySupported.length >= data.rows.length) {alreadySupported = new Set();} let dev = getRandomElement(data.rows); if (dev.profile && !alreadySupported.has(dev.profile)) { alreadySupported.add(dev.profile); setCookie('already-supported', [...alreadySupported].join(), 7); openInNewTab(dev.profile); return; } else { supportRandomDev(); } }); }
 
       function getRandomInt(max) { return Math.floor(Math.random() * max); }
       function getRandomElement(array) { return array[getRandomInt(array.length)]}
@@ -157,7 +141,7 @@
             </p>
         </header>
         <div>
-            <button class="big-button" onclick="supportRandomDev()">Support <div class="support-emoji">🙌</div></button>
+            <button class="big-button" onclick='var url = "https://gsx2json.com/api?id=1mmG25XY0vd8DIGvg6pASx3E-MoOGscU2yCMealPq4RM&sheet=Sheet1"; fetch(url).then(data => data.json()).then( function( data ) { if(alreadySupported.length >= data.rows.length) {alreadySupported = new Set();} let dev = getRandomElement(data.rows); if (dev.profile && !alreadySupported.has(dev.profile)) { alreadySupported.add(dev.profile); setCookie("already-supported", [...alreadySupported].join(), 7); openInNewTab(dev.profile); return; } else { supportRandomDev(); } });'>Support <div class="support-emoji">🙌</div></button>
         </div>
         <footer  style="display: flex"> 
             <a class="footer-link bouncy-link" href="https://github.com/Support-Ukrainian-Creators-and-Coders/ukrainian-creators-and-coders">🚩Main Project</a>
