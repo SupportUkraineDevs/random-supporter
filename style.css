@@ -1,0 +1,56 @@
+.main-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    margin-top: 10rem;
+}
+
+
+.big-button {
+    font-size: 26px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+.octocat {
+  height: 60px;
+  width: auto;
+}
+
+.octocat:hover{
+  animation: bounce; 
+  animation-duration: 1s; 
+}
+.lead-text {
+  text-align: center;
+}
+.secondary-text {
+  text-align: center;
+}
+
+.last-paragraph {
+  padding-bottom: 1rem;
+}
+.footer-link {
+  align-self: center
+}
+
+.bouncy-link:hover {
+  animation: headShake; 
+  animation-duration: 2s; 
+}
+
+.big-button:hover > .support-emoji {
+  animation: shakeY; 
+  animation-duration: 2s; 
+}
+
+.support-emoji {
+  display: inline-block; 
+}
