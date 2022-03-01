@@ -1,7 +1,7 @@
 /*
 * Version
 */
-const version = "1.0.1";
+const version = "1.0.2";
 /*
 * Init cycle to get cookie with already visited devs, check if api version has changed and in case delete cookies
 */
